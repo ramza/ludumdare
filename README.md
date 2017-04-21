@@ -1,1 +1,3 @@
-this is a game.
+Brain Jar
+
+ludumdare 38
