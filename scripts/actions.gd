@@ -36,9 +36,7 @@ func _on_effects_timer_timeout():
 func _on_effects_area_enter(area):
 	if (type == "axe" and area.get_parent().is_in_group("trees")):
 		area.get_parent().hit(1)
-	elif (type == "spade"):
-		var r = rand_range(0, 100)
-		if(r < 30):
-			game.add_harvested_rocks(1)
+	elif (type == "spade" and area.get_parent().is_in_group("rocks")):
+		area.get_parent().hit(1)
 	elif (type == "pole"):
 		pass
