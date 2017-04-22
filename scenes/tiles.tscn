@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://images/tilemap.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="Tiles" type="Node2D"]
+
+[node name="Grass" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+vframes = 16
+hframes = 16
+
+[node name="StaticBody" type="StaticBody2D" parent="Grass"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass/StaticBody"]
+
+transform/pos = Vector2( 8, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Dirt" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+vframes = 16
+hframes = 16
+frame = 1
+
+[node name="Dirt" type="StaticBody2D" parent="Dirt"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dirt/Dirt"]
+
+transform/pos = Vector2( 8, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Water" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+vframes = 16
+hframes = 16
+frame = 2
+
+[node name="Water" type="StaticBody2D" parent="Water"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Water"]
+
+transform/pos = Vector2( 8, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Void" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+centered = false
+vframes = 16
+hframes = 16
+frame = 3
+
+[node name="Water" type="StaticBody2D" parent="Void"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 8, 8 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Void/Water"]
+
+transform/pos = Vector2( 8, 8 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+
