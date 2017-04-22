@@ -8,6 +8,7 @@ var sample_player
 var timer
 var sprite
 var area
+var type
 
 var weapon_timer
 
@@ -22,14 +23,22 @@ func _ready():
 	timer.connect("timeout", self, "_on_effects_timer_timeout")
 	
 #takes weapon name string as a type and plays the correct effect
-func play_effect(var type):
+func play_effect(var _type):
+	type = _type
 	timer.start()
 	anim.play(type)
-	sample_player.play(type)
+	if(type != "pole"):
+		sample_player.play(type)
 	
 func _on_effects_timer_timeout():
 	queue_free()
 	
 func _on_effects_area_enter(area):
-	if (area.get_parent().is_in_group("trees")):
+	if (type == "axe" and area.get_parent().is_in_group("trees")):
 		area.get_parent().hit(1)
+	elif (type == "spade"):
+		var r = rand_range(0, 100)
+		if(r < 30):
+			game.add_harvested_rocks(1)
+	elif (type == "pole"):
+		pass

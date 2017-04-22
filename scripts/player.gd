@@ -9,6 +9,7 @@ var anim
 var action_timer
 var can_act = true
 var item = "axe"
+var item_index = 0
 var action = preload("res://scenes/action.tscn")
 var prev_direction
 var crosshairs
@@ -48,6 +49,9 @@ func _fixed_process(delta):
 		
 		if (Input.is_action_pressed("action")):
 			do_action()
+			
+		if (Input.is_action_pressed("select")):
+			handle_items()
 	
 	if(motion == Vector2(0,0)):
 		stop = true
@@ -74,6 +78,25 @@ func set_crosshair():
 		pos = Vector2(0, 10)
 	return pos
 	
+func handle_items():
+	can_act = false
+	action_timer.start()
+	item_index += 1
+	if ( item_index > 2 ):
+		item_index = 0
+	var select_box = game.HUD.get_node("select_box")
+	var box_pos
+	if( item_index == 0):
+		item = "axe"
+		box_pos = game.HUD.get_node("axe").get_pos()
+	elif ( item_index == 1):
+		item = "spade"
+		box_pos = game.HUD.get_node("spade").get_pos()
+	elif(item_index == 2):
+		item = "pole"
+		box_pos = game.HUD.get_node("pole").get_pos()
+	select_box.set_pos(box_pos)
+
 func do_animations():
 	if(direction == "up"):
 		if(stop):
@@ -96,10 +119,11 @@ func do_animations():
 	
 func do_action():
 	var pos = set_crosshair()
-	if (item == "axe"):
-		var fx = action.instance()
-		crosshairs.add_child(fx)
-		fx.set_pos(pos)
-		fx.play_effect(item)
-		can_act = false
-		action_timer.start()
+	var fx = action.instance()
+	crosshairs.add_child(fx)
+	fx.set_pos(pos)
+	fx.play_effect(item)
+	can_act = false
+	action_timer.start()
+	
+		

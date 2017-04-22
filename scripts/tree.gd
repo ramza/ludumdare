@@ -18,6 +18,7 @@ func hit(var damage):
 	health -= damage
 	if(health <= 0):
 		queue_free()
+		game.add_harvested_trees(1)
 	else:
 		anim.play("shake")
 		var fx = chips.instance()

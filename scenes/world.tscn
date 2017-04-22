@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=1]
+[gd_scene load_steps=31 format=1]
 
 [ext_resource path="res://other/tileset.xml" type="TileSet" id=1]
 [ext_resource path="res://scripts/player.gd" type="Script" id=2]
@@ -16,7 +16,12 @@
 [ext_resource path="res://images/hero/guy11.png" type="Texture" id=14]
 [ext_resource path="res://black_bar.png" type="Texture" id=15]
 [ext_resource path="res://axe_icon.png" type="Texture" id=16]
-[ext_resource path="res://scenes/tree.tscn" type="PackedScene" id=17]
+[ext_resource path="res://images/spade_icon.png" type="Texture" id=17]
+[ext_resource path="res://images/pole.png" type="Texture" id=18]
+[ext_resource path="res://images/tree_icon.png" type="Texture" id=19]
+[ext_resource path="res://images/stone.png" type="Texture" id=20]
+[ext_resource path="res://images/select_box.png" type="Texture" id=21]
+[ext_resource path="res://scenes/tree.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,12 +38,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 4 ) ] }
 
 [sub_resource type="Animation" id=3]
 
@@ -50,12 +50,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 5 ) ] }
 
 [sub_resource type="Animation" id=4]
 
@@ -67,12 +62,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 6 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 6 ) ] }
 
 [sub_resource type="Animation" id=5]
 
@@ -84,12 +74,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ] }
 
 [sub_resource type="Animation" id=6]
 
@@ -100,12 +85,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ] }
 
 [sub_resource type="Animation" id=7]
 
@@ -117,12 +97,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 3 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 3 ) ] }
 
 [sub_resource type="SampleLibrary" id=8]
 
@@ -149,6 +124,7 @@ tile_data = IntArray( -983053, 3, -983052, 3, -983051, 3, -983050, 3, -983049, 3
 
 [node name="player" type="KinematicBody2D" parent="."]
 
+editor/display_folded = true
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 0.60243, 0, 0, 0.981083, -0.174865, 2.56911 )
@@ -239,23 +215,79 @@ scale = Vector2( 1, 1 )
 transform/pos = Vector2( 160.794, 165.233 )
 texture = ExtResource( 15 )
 
-[node name="axe_icon" type="Sprite" parent="HUD"]
+[node name="axe" type="Sprite" parent="HUD"]
 
-transform/pos = Vector2( 157.938, 164.831 )
+transform/pos = Vector2( 142.974, 165.711 )
 texture = ExtResource( 16 )
+
+[node name="spade" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 162.69, 165.711 )
+texture = ExtResource( 17 )
+
+[node name="pole" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 180.917, 165.711 )
+texture = ExtResource( 18 )
+
+[node name="tree" type="Sprite" parent="HUD"]
+
+editor/display_folded = true
+transform/pos = Vector2( 291.632, 12.9876 )
+texture = ExtResource( 19 )
+
+[node name="Label" type="Label" parent="HUD/tree"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 7.0
+margin/top = -5.0
+margin/right = 47.0
+margin/bottom = 9.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="rocks" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 291.632, 29.8364 )
+texture = ExtResource( 20 )
+
+[node name="Label" type="Label" parent="HUD/rocks"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 7.0
+margin/top = -5.0
+margin/right = 47.0
+margin/bottom = 9.0
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="select_box" type="Sprite" parent="HUD"]
+
+transform/pos = Vector2( 142.655, 165.89 )
+texture = ExtResource( 21 )
 
 [node name="trees" type="Node2D" parent="."]
 
-[node name="tree" parent="trees" instance=ExtResource( 17 )]
+[node name="tree" parent="trees" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 
-[node name="tree1" parent="trees" instance=ExtResource( 17 )]
+[node name="tree1" parent="trees" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 90.9561, 13.0004 )
 
-[node name="tree2" parent="trees" instance=ExtResource( 17 )]
+[node name="tree2" parent="trees" instance=ExtResource( 22 )]
 
 editor/display_folded = true
 transform/pos = Vector2( 96.9, -19.9615 )
