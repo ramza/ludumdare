@@ -49,9 +49,37 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
+[node name="fresh_water" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="fresh_water"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fresh_water/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
 [node name="void" type="Sprite" parent="."]
 
 editor/display_folded = true
+visibility/visible = false
 texture = ExtResource( 1 )
 vframes = 16
 hframes = 16
@@ -71,6 +99,61 @@ friction = 1.0
 bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="void/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="flowers" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 5
+
+[node name="flowers1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 6
+
+[node name="flowers2" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 7
+
+[node name="wood" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 8
+
+[node name="blue_wall" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 9
+
+[node name="StaticBody2D" type="StaticBody2D" parent="blue_wall"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blue_wall/StaticBody2D"]
 
 shape = SubResource( 1 )
 trigger = false

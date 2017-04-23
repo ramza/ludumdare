@@ -38,5 +38,6 @@ func _on_effects_area_enter(area):
 		area.get_parent().hit(1)
 	elif (type == "spade" and area.get_parent().is_in_group("rocks")):
 		area.get_parent().hit(1)
-	elif (type == "pole"):
-		pass
+	elif (type == "pole" and area.get_parent().is_in_group("fish")):
+		area.get_parent().hit(1)
+		sample_player.play(type)

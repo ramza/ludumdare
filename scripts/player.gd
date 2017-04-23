@@ -125,5 +125,3 @@ func do_action():
 	fx.play_effect(item)
 	can_act = false
 	action_timer.start()
-	
-		
