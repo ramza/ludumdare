@@ -109,6 +109,8 @@ func _process(delta):
 						game.bridge = true
 						bridge_label.hide()
 						sample_player.play("powerup")
+					else:
+						sample_player.play("wrong")
 			elif(menu_index == 2):
 				menu_done = true
 				game.player.can_act = true

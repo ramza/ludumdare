@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=1]
+[gd_scene load_steps=20 format=1]
 
 [ext_resource path="res://other/tileset.xml" type="TileSet" id=1]
 [ext_resource path="res://scenes/HUD.tscn" type="PackedScene" id=2]
@@ -7,20 +7,21 @@
 [ext_resource path="res://audio/computer.wav" type="Sample" id=5]
 [ext_resource path="res://audio/powerup.wav" type="Sample" id=6]
 [ext_resource path="res://audio/select.wav" type="Sample" id=7]
-[ext_resource path="res://images/dialogue_box.png" type="Texture" id=8]
-[ext_resource path="res://images/tree_icon.png" type="Texture" id=9]
-[ext_resource path="res://images/stone.png" type="Texture" id=10]
-[ext_resource path="res://images/fish.png" type="Texture" id=11]
-[ext_resource path="res://images/menu_select_box.png" type="Texture" id=12]
-[ext_resource path="res://scripts/portal.gd" type="Script" id=13]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=14]
+[ext_resource path="res://audio/wrong.wav" type="Sample" id=8]
+[ext_resource path="res://images/dialogue_box.png" type="Texture" id=9]
+[ext_resource path="res://images/tree_icon.png" type="Texture" id=10]
+[ext_resource path="res://images/stone.png" type="Texture" id=11]
+[ext_resource path="res://images/fish.png" type="Texture" id=12]
+[ext_resource path="res://images/menu_select_box.png" type="Texture" id=13]
+[ext_resource path="res://scripts/portal.gd" type="Script" id=14]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=6]
 
 custom_solver_bias = 0.0
 extents = Vector2( 8, 8 )
@@ -30,8 +31,9 @@ extents = Vector2( 8, 8 )
 samples/computer = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 samples/powerup = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/select = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/wrong = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=7]
 
 custom_solver_bias = 0.0
 extents = Vector2( 4.71878, 10 )
@@ -61,7 +63,7 @@ tile_data = IntArray( -131076, 4, -131075, 4, -131074, 4, -131073, 4, -196608, 4
 [node name="computer" type="StaticBody2D" parent="."]
 
 input/pickable = false
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 5 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 154.305, 95.4496 )
 shapes/0/trigger = false
 collision/layers = 1
@@ -80,14 +82,14 @@ texture = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="computer"]
 
 transform/pos = Vector2( 154.305, 95.4496 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 trigger = false
 _update_shape_index = 0
 
 [node name="Area2D" type="Area2D" parent="computer"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 2 )
+shapes/0/shape = SubResource( 6 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 154.299, 99.5178 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -98,7 +100,7 @@ angular_damp = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="computer/Area2D"]
 
 transform/pos = Vector2( 154.299, 99.5178 )
-shape = SubResource( 2 )
+shape = SubResource( 6 )
 trigger = false
 _update_shape_index = 0
 
@@ -128,7 +130,7 @@ transform/pos = Vector2( 2, 2 )
 [node name="Sprite" type="Sprite" parent="menu/music_label"]
 
 transform/pos = Vector2( 91.6398, 42.2753 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="menu/music_label"]
 
@@ -150,7 +152,7 @@ max_lines_visible = -1
 editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 151.758, 41.7048 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="menu/music_label/tree"]
 
@@ -172,7 +174,7 @@ max_lines_visible = -1
 editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 186.881, 42.2451 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="menu/music_label/rocks"]
 
@@ -194,7 +196,7 @@ max_lines_visible = -1
 editor/display_folded = true
 visibility/visible = false
 transform/pos = Vector2( 225.247, 42.2451 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="menu/music_label/fish"]
 
@@ -219,7 +221,7 @@ transform/pos = Vector2( 2, 32 )
 [node name="Sprite" type="Sprite" parent="menu/bridge_label"]
 
 transform/pos = Vector2( 91.6398, 42.2753 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="menu/bridge_label"]
 
@@ -239,7 +241,7 @@ max_lines_visible = -1
 [node name="tree" type="Sprite" parent="menu/bridge_label"]
 
 transform/pos = Vector2( 151.758, 41.7048 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="menu/bridge_label/tree"]
 
@@ -259,7 +261,7 @@ max_lines_visible = -1
 [node name="rocks" type="Sprite" parent="menu/bridge_label"]
 
 transform/pos = Vector2( 186.881, 42.2451 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="Label" type="Label" parent="menu/bridge_label/rocks"]
 
@@ -279,7 +281,7 @@ max_lines_visible = -1
 [node name="fish" type="Sprite" parent="menu/bridge_label"]
 
 transform/pos = Vector2( 225.247, 42.2451 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Label" type="Label" parent="menu/bridge_label/fish"]
 
@@ -314,8 +316,7 @@ max_lines_visible = -1
 [node name="menu_select_box" type="Sprite" parent="menu"]
 
 transform/pos = Vector2( 93.561, 44.7805 )
-transform/scale = Vector2( 1, 1 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="Timer" type="Timer" parent="menu"]
 
@@ -328,23 +329,23 @@ autostart = false
 
 transform/pos = Vector2( 151.801, 189.837 )
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 7 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.015152, 19.5079 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 13 )
+script/script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
 
 transform/pos = Vector2( 0.015152, 19.5079 )
-shape = SubResource( 3 )
+shape = SubResource( 7 )
 trigger = false
 _update_shape_index = 0
 
-[node name="player" parent="." instance=ExtResource( 14 )]
+[node name="player" parent="." instance=ExtResource( 15 )]
 
 transform/pos = Vector2( 151.624, 190.632 )
 
