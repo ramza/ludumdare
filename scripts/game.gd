@@ -10,6 +10,8 @@ var HUD
 var player
 var current_scene
 var manager_scene
+var can_spawn = true
+var resources = []
 
 func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))
@@ -61,3 +63,17 @@ func _deferred_goto_scene(path):
     # optional, to make it compatible with the SceneTree.change_scene() API
     get_tree().set_current_scene( current_scene )
     load_essentials()
+
+func add_resource(var resource):
+	call_deferred("_deferred_add_resource", resource)
+	
+func _deferred_add_resource(var resource):
+	game.current_scene.add_child(resource)
+		
+func clear_resources():
+	for i in range(resources.size()-1, -1, -1):
+		print("anything?")
+		if (resources[i] != null):
+			resources[i].queue_free()
+			resources.remove(i)
+	resources.clear()

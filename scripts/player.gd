@@ -7,7 +7,12 @@ var direction = "down"
 var stop = false
 var anim 
 var action_timer
+var select_timer 
+var walk_timer
+var sample_player
 var can_act = true
+var can_select = true
+var can_play_walk_sound = true
 var item = "axe"
 var item_index = 0
 var action = preload("res://scenes/action.tscn")
@@ -21,15 +26,28 @@ func _ready():
 	anim = get_node("AnimationPlayer")
 	crosshairs = get_node("Position2D")
 	action_timer = get_node("action_timer")
+	sample_player = get_node("SamplePlayer2D")
 	action_timer.connect("timeout", self, "_on_action_timer_timeout")
+	walk_timer = get_node("walk_timer")
+	walk_timer.connect("timeout", self, "_on_walk_timer_timeout")
+	select_timer = get_node("select_timer")
+	select_timer.connect("timeout", self, "_on_select_timer_timeout")
+	
 	set_fixed_process(true)
 
+func _on_walk_timer_timeout():
+	can_play_walk_sound = true
+
+func _on_select_timer_timeout():
+	can_select = true
+	
 func _on_action_timer_timeout():
 	can_act = true
 
 func _fixed_process(delta):
 	prev_direction = direction
 	motion = Vector2(0,0)
+	var is_walking = true
 	if(can_act):
 		stop = false
 		if (Input.is_action_pressed("move_up")):
@@ -46,11 +64,18 @@ func _fixed_process(delta):
 			motion += Vector2(1, 0)
 			scale.x = 1
 			direction = "right"
+		else:
+			is_walking = false
 		
+		if(is_walking and can_play_walk_sound):
+			sample_player.play("walk")
+			can_play_walk_sound = false
+			walk_timer.start()
+	
 		if (Input.is_action_pressed("action")):
 			do_action()
 			
-		if (Input.is_action_pressed("select")):
+		if (Input.is_action_pressed("select") and can_select):
 			handle_items()
 	
 	if(motion == Vector2(0,0)):
@@ -79,8 +104,8 @@ func set_crosshair():
 	return pos
 	
 func handle_items():
-	can_act = false
-	action_timer.start()
+	can_select = false
+	select_timer.start()
 	item_index += 1
 	if ( item_index > 2 ):
 		item_index = 0

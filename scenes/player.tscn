@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=1]
+[gd_scene load_steps=23 format=1]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://images/hero/guy12.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://images/hero/guy4.png" type="Texture" id=11]
 [ext_resource path="res://images/hero/guy10.png" type="Texture" id=12]
 [ext_resource path="res://images/hero/guy11.png" type="Texture" id=13]
+[ext_resource path="res://audio/walk.wav" type="Sample" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -29,12 +30,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 3 ) ] }
 
 [sub_resource type="Animation" id=3]
 
@@ -46,12 +42,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 4 ) ] }
 
 [sub_resource type="Animation" id=4]
 
@@ -63,12 +54,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ ExtResource( 5 ) ] }
 
 [sub_resource type="Animation" id=5]
 
@@ -80,12 +66,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ] }
 
 [sub_resource type="Animation" id=6]
 
@@ -96,12 +77,7 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ] }
 
 [sub_resource type="Animation" id=7]
 
@@ -113,15 +89,11 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 2 ) ]
-}
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ ExtResource( 5 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 2 ) ] }
 
 [sub_resource type="SampleLibrary" id=8]
 
+samples/walk = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 14 ) }
 
 [node name="player" type="KinematicBody2D"]
 
@@ -200,6 +172,20 @@ transform/pos = Vector2( 6.6223, 1.50356 )
 
 process_mode = 1
 wait_time = 0.4
+one_shot = false
+autostart = false
+
+[node name="select_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
+[node name="walk_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.3
 one_shot = false
 autostart = false
 

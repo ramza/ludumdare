@@ -10,7 +10,6 @@ var timer
 
 func _ready():
 	anim = get_node("AnimationPlayer")
-	anim.play("still")
 	timer = get_node("Timer")
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.start()

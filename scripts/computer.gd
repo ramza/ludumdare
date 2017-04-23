@@ -6,28 +6,34 @@ extends StaticBody2D
 var area
 var music_label
 var exit_label
+var menu_select_box
 var menu
 var menu_done = false
 var menu_index = 0
 
 func _ready():
+	game.can_spawn = false
 	area = get_node("Area2D")
 	area.connect("body_enter", self, "_on_computer_body_enter")
-	music_label = get_node("music_label")
-	exit_label = get_node("exit_label")
+
 	menu = game.current_scene.get_node("menu")
+	music_label = menu.get_node("music_label")
+	exit_label = menu.get_node("exit_label")
+	menu_select_box = menu.get_node("menu_select_box")
 	menu.get_node("music_label").hide()
 	menu.get_node("exit_label").hide()
+	menu_select_box.hide()
+	set_process(true)
 	# Called every time the node is added to the scene.
 	# Initialization here
-	
+
 func _on_computer_body_enter(body):
 	if ( body.get_name() == "player"):
 		menu.get_node("music_label").show()
 		menu.get_node("exit_label").show()
-		set_process(true)
 
 func _process(delta):
+	
 	if(menu_done):
 		set_process(false)
 	else:
