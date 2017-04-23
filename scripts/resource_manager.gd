@@ -31,7 +31,7 @@ func spawn_handler():
 				game.add_resource(fishy)
 				fishes.append(fishy)
 		if (tilemap.get_cell(tile.x, tile.y) == 7):
-			if(rand_range(0, 10) < 2):
+			if(rand_range(0, 100) < 2):
 				var t = tree.instance()
 				var pos = Vector2(tile.x * 16, tile.y*16)
 				t.set_pos(pos)
@@ -43,7 +43,7 @@ func spawn_handler():
 				r.set_pos(pos)
 				game.add_resource(r)
 		if (tilemap.get_cell(tile.x, tile.y) == 6):
-			if(rand_range(0, 5000) < 2):
+			if(rand_range(0, 500) < 2):
 				var r = rock.instance()
 				var pos = Vector2(tile.x * 16, tile.y*16)
 				r.set_pos(pos)

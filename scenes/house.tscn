@@ -104,13 +104,14 @@ scale = Vector2( 1, 1 )
 [node name="music_label" type="Node2D" parent="menu"]
 
 editor/display_folded = true
+transform/pos = Vector2( 2, 2 )
 
-[node name="music_player_sprite" type="Sprite" parent="menu/music_label"]
+[node name="Sprite" type="Sprite" parent="menu/music_label"]
 
 transform/pos = Vector2( 91.6398, 42.2753 )
 texture = ExtResource( 5 )
 
-[node name="music_player" type="Label" parent="menu/music_label"]
+[node name="Label" type="Label" parent="menu/music_label"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -127,6 +128,8 @@ max_lines_visible = -1
 
 [node name="tree" type="Sprite" parent="menu/music_label"]
 
+editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 151.758, 41.7048 )
 texture = ExtResource( 6 )
 
@@ -147,6 +150,8 @@ max_lines_visible = -1
 
 [node name="rocks" type="Sprite" parent="menu/music_label"]
 
+editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 186.881, 42.2451 )
 texture = ExtResource( 7 )
 
@@ -167,10 +172,97 @@ max_lines_visible = -1
 
 [node name="fish" type="Sprite" parent="menu/music_label"]
 
+editor/display_folded = true
+visibility/visible = false
 transform/pos = Vector2( 225.247, 42.2451 )
 texture = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="menu/music_label/fish"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = -5.0
+margin/right = 48.0
+margin/bottom = 9.0
+text = "2"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="bridge_label" type="Node2D" parent="menu"]
+
+editor/display_folded = true
+transform/pos = Vector2( 2, 32 )
+
+[node name="Sprite" type="Sprite" parent="menu/bridge_label"]
+
+transform/pos = Vector2( 91.6398, 42.2753 )
+texture = ExtResource( 5 )
+
+[node name="Label" type="Label" parent="menu/bridge_label"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 51.6398
+margin/top = 35.2753
+margin/right = 133.64
+margin/bottom = 49.2753
+text = "bridge"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tree" type="Sprite" parent="menu/bridge_label"]
+
+transform/pos = Vector2( 151.758, 41.7048 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="menu/bridge_label/tree"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = -5.0
+margin/right = 48.0
+margin/bottom = 9.0
+text = "5"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="rocks" type="Sprite" parent="menu/bridge_label"]
+
+transform/pos = Vector2( 186.881, 42.2451 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="menu/bridge_label/rocks"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 8.0
+margin/top = -5.0
+margin/right = 48.0
+margin/bottom = 9.0
+text = "2"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="fish" type="Sprite" parent="menu/bridge_label"]
+
+transform/pos = Vector2( 225.247, 42.2451 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="menu/bridge_label/fish"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -191,10 +283,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 55.0
-margin/top = 122.0
-margin/right = 95.0
-margin/bottom = 136.0
+margin/left = 52.0
+margin/top = 94.0
+margin/right = 92.0
+margin/bottom = 108.0
 text = "Exit"
 percent_visible = 1.0
 lines_skipped = 0
@@ -202,9 +294,16 @@ max_lines_visible = -1
 
 [node name="menu_select_box" type="Sprite" parent="menu"]
 
-transform/pos = Vector2( 90.226, 42.6923 )
+transform/pos = Vector2( 93.561, 44.7805 )
 transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="menu"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
 
 [node name="portal" type="Area2D" parent="."]
 

@@ -12,6 +12,7 @@ var current_scene
 var manager_scene
 var can_spawn = true
 var resources = []
+var bridge = false
 
 func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))

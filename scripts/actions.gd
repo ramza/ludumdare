@@ -27,8 +27,6 @@ func play_effect(var _type):
 	type = _type
 	timer.start()
 	anim.play(type)
-	if(type != "pole"):
-		sample_player.play(type)
 	
 func _on_effects_timer_timeout():
 	queue_free()
@@ -36,8 +34,10 @@ func _on_effects_timer_timeout():
 func _on_effects_area_enter(area):
 	if (type == "axe" and area.get_parent().is_in_group("trees")):
 		area.get_parent().hit(1)
+		sample_player.play(type)
 	elif (type == "spade" and area.get_parent().is_in_group("rocks")):
 		area.get_parent().hit(1)
+		sample_player.play(type)
 	elif (type == "pole" and area.get_parent().is_in_group("fish")):
 		area.get_parent().hit(1)
 		sample_player.play(type)
