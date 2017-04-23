@@ -57,7 +57,8 @@ func _on_computer_body_enter(body):
 	if ( body.get_name() == "player"):
 		menu.get_node("music_label").show()
 		menu.get_node("exit_label").show()
-		bridge_label.show()
+		if(!game.bridge):
+			bridge_label.show()
 		menu_done = false
 		menu_select_box.show()
 		game.player.can_act = false
@@ -100,13 +101,14 @@ func _process(delta):
 					manager_scene.get_node("StreamPlayer").stop()
 				can_input = false
 			elif(menu_index == 1):
-				
-				if(game.trees >= 5 and game.rocks >= 5 and game.fish >= 5):
-					game.trees -=5
-					game.rocks -=5
-					game.fish-=5
-					game.bridge = true
-					sample_player.play("powerup")
+				if(!game.bridge):
+					if(game.trees >= 5 and game.rocks >= 5 and game.fish >= 5):
+						game.trees -=5
+						game.rocks -=5
+						game.fish-=5
+						game.bridge = true
+						bridge_label.hide()
+						sample_player.play("powerup")
 			elif(menu_index == 2):
 				menu_done = true
 				game.player.can_act = true
