@@ -4,7 +4,7 @@ extends StaticBody2D
 # var a = 2
 # var b = "textvar"
 var anim 
-var health = 3
+var health = 4
 var chips = preload("res://scenes/effects.tscn")
 
 func _ready():

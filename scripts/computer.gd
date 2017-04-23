@@ -8,6 +8,7 @@ var music_label
 var exit_label
 var bridge_label
 var menu_select_box
+var sample_player
 var menu
 var menu_done = false
 var menu_index = 0
@@ -20,6 +21,7 @@ func _ready():
 	area.connect("body_enter", self, "_on_computer_body_enter")
 	menu = game.current_scene.get_node("menu")
 	
+	sample_player = get_node("SamplePlayer2D")
 	timer = menu.get_node("Timer")
 	timer.connect("timeout", self, "_on_timer_timeout")
 	music_label = menu.get_node("music_label")
@@ -59,10 +61,13 @@ func _on_computer_body_enter(body):
 		menu_done = false
 		menu_select_box.show()
 		game.player.can_act = false
+		game.player.action_timer.stop()
+		sample_player.play("computer")
+		can_input = false
+		timer.start()
 		set_process(true)
 		
 func _process(delta):
-	
 	if(menu_done):
 		set_process(false)
 	elif(can_input):
@@ -70,10 +75,13 @@ func _process(delta):
 			menu_index -= 1
 			can_input = false
 			timer.start()
+			sample_player.play("select")
 		elif (Input.is_action_pressed("move_down")):
 			menu_index += 1
 			can_input = false
 			timer.start()
+			sample_player.play("select")
+			
 		if (menu_index < 0):
 			menu_index = 0
 		elif(menu_index > 2):
@@ -83,14 +91,28 @@ func _process(delta):
 		menu_select_box.set_pos(box_pos)
 		
 		if(Input.is_action_pressed("action")):
+			can_input = false
+			timer.start()
 			if(menu_index == 0 ): 
-				manager_scene.get_node("StreamPlayer").play()
+				if(!manager_scene.get_node("StreamPlayer").is_playing()):
+					manager_scene.get_node("StreamPlayer").play()
+				else:
+					manager_scene.get_node("StreamPlayer").stop()
 				can_input = false
 			elif(menu_index == 1):
-				game.bridge = true
+				
+				if(game.trees >= 5 and game.rocks >= 5 and game.fish >= 5):
+					game.trees -=5
+					game.rocks -=5
+					game.fish-=5
+					game.bridge = true
+					sample_player.play("powerup")
 			elif(menu_index == 2):
 				menu_done = true
 				game.player.can_act = true
+				game.player.action_timer.start()
 				set_labels_visible(false)
 				set_process(false)
+				sample_player.play("computer")
+				menu_index = 0
 	
