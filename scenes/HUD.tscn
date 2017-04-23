@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://images/axe_icon.png" type="Texture" id=1]
 [ext_resource path="res://images/spade_icon.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://images/stone.png" type="Texture" id=5]
 [ext_resource path="res://images/fish.png" type="Texture" id=6]
 [ext_resource path="res://images/select_box.png" type="Texture" id=7]
+[ext_resource path="res://images/black_bar.png" type="Texture" id=8]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -101,5 +102,31 @@ max_lines_visible = -1
 
 transform/pos = Vector2( 142.655, 165.89 )
 texture = ExtResource( 7 )
+
+[node name="dialogue_box" type="Node2D" parent="."]
+
+visibility/visible = false
+
+[node name="Sprite" type="Sprite" parent="dialogue_box"]
+
+transform/pos = Vector2( 158.828, 163.394 )
+transform/scale = Vector2( 1.04893, 1.20449 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="dialogue_box"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 7.0
+margin/top = 148.0
+margin/right = 317.0
+margin/bottom = 214.0
+text = "It would be great if some people could learn to stay on their side of the island."
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
