@@ -7,7 +7,7 @@ var tree = preload("res://scenes/tree.tscn")
 var rock = preload("res://scenes/rocks.tscn")
 
 func _ready():
-	tilemap = get_tree().get_root().get_child(1).get_node("tilemap")
+	tilemap = game.current_scene.get_node("tilemap")
 	var timer = get_node("Timer")
 	timer.connect("timeout", self, "_on_timer_timeout")
 	timer.start()
@@ -34,16 +34,16 @@ func spawn_handler():
 				var t = tree.instance()
 				var pos = Vector2(tile.x * 16, tile.y*16)
 				t.set_pos(pos)
-				get_tree().get_root().get_child(1).add_child(t)
+				game.current_scene.add_child(t)
 				trees.append(t)
 			if(rand_range(0, 300) < 2):
 				var r = rock.instance()
 				var pos = Vector2(tile.x * 16, tile.y*16)
 				r.set_pos(pos)
-				get_tree().get_root().get_child(1).add_child(r)
+				game.current_scene.add_child(r)
 		if (tilemap.get_cell(tile.x, tile.y) == 6):
 			if(rand_range(0, 5000) < 2):
 				var r = rock.instance()
 				var pos = Vector2(tile.x * 16, tile.y*16)
 				r.set_pos(pos)
-				get_tree().get_root().get_child(1).add_child(r)
+				game.current_scene.add_child(r)

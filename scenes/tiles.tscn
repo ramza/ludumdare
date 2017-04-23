@@ -159,4 +159,73 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
+[node name="ocean_water" type="Sprite" parent="."]
+
+editor/display_folded = true
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 10
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ocean_water"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ocean_water/StaticBody2D"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="bridge" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 11
+
+[node name="small_planks" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 12
+
+[node name="orange_wood" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 16
+
+[node name="orange_wood1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 17
+
+[node name="wood_plank" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 18
+
+[node name="wood_plank1" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+vframes = 16
+hframes = 16
+frame = 19
+
 

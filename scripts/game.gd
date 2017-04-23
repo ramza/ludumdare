@@ -9,6 +9,7 @@ var fish = 0
 var HUD
 var player
 var current_scene
+var manager_scene
 
 func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))
@@ -28,16 +29,17 @@ func add_harvested_fish(var value):
 	HUD.get_node("fish").get_node("Label").set_text(str(fish))
 	
 func _ready():
-	HUD = get_tree().get_root().get_child(1).get_node("HUD")
-	player = get_tree().get_root().get_child(1).get_node("player")
-	current_scene = get_tree().get_root().get_child(1)
+	current_scene = get_tree().get_root().get_child(2)
+	HUD = current_scene.get_node("HUD")
+	player = current_scene.get_node("player")
+	
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
 	
 func load_essentials():
-	player = get_tree().get_root().get_child(1).get_node("player")
-	HUD = get_tree().get_root().get_child(1).get_node("HUD")
+	player = current_scene.get_node("player")
+	HUD = current_scene.get_node("HUD")
 	update_HUD()
 func goto_scene(path):
 

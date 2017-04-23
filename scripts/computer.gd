@@ -7,6 +7,8 @@ var area
 var music_label
 var exit_label
 var menu
+var menu_done = false
+var menu_index = 0
 
 func _ready():
 	area = get_node("Area2D")
@@ -26,4 +28,19 @@ func _on_computer_body_enter(body):
 		set_process(true)
 
 func _process(delta):
-	pass
+	if(menu_done):
+		set_process(false)
+	else:
+		if(Input.is_action_pressed("move_up")):
+			menu_index -= 1
+		if (Input.is_action_pressed("move_down")):
+			menu_index += 1
+		if (menu_index < 0):
+			menu_index = 0
+		elif(menu_index > 2):
+			menu_index = 0
+		
+		if(menu_index == 0 and Input.is_action_pressed("action")):
+			manager_scene.get_node("StreamPlayer").play()
+			menu_done = true
+	
