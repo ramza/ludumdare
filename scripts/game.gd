@@ -13,6 +13,9 @@ var manager_scene
 var can_spawn = true
 var resources = []
 var bridge = false
+var bridge1 = false
+var justins = false
+var in_overworld = true
 
 func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))
@@ -43,7 +46,10 @@ func _ready():
 func load_essentials():
 	player = current_scene.get_node("player")
 	HUD = current_scene.get_node("HUD")
+	if(in_overworld):
+		player.set_location()
 	update_HUD()
+	
 func goto_scene(path):
 
     call_deferred("_deferred_goto_scene",path)

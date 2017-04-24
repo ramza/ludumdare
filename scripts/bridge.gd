@@ -5,16 +5,13 @@ extends StaticBody2D
 # var b = "textvar"
 var sprite
 var collider
+export var bridge1 = false
 
 func _ready():
 	sprite = get_node("Sprite")
 	collider = get_node("CollisionShape2D")
-	
-	if (game.bridge):
+	sprite.set_frame(10)
+	if(bridge1 and game.bridge1):
 		queue_free()
-	elif(!game.bridge):
-		sprite.set_frame(10)
-		
-	# Called every time the node is added to the scene.
-	# Initialization here
-	pass
+	if(game.bridge and !bridge1):
+		queue_free()

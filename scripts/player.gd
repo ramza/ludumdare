@@ -43,7 +43,13 @@ func _on_select_timer_timeout():
 	
 func _on_action_timer_timeout():
 	can_act = true
-
+	
+func set_location():
+	var pos = game.current_scene.get_node("spawn_points").get_node("home").get_pos()
+	if(game.justins):
+		pos = game.current_scene.get_node("spawn_points").get_node("justins").get_pos()
+	set_pos(pos)
+	
 func _fixed_process(delta):
 	prev_direction = direction
 	motion = Vector2(0,0)
