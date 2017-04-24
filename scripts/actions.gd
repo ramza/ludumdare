@@ -41,3 +41,6 @@ func _on_effects_area_enter(area):
 	elif (type == "pole" and area.get_parent().is_in_group("fish")):
 		area.get_parent().hit(1)
 		sample_player.play(type)
+	elif( type == "spade" and area.get_parent().is_in_group("diamond") and game.has_super_axe):
+		area.get_parent().hit(1)
+		sample_player.play("diamond")

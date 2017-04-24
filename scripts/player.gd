@@ -2,7 +2,6 @@
 extends KinematicBody2D
 
 # Member variables\\
-
 var direction = "down"
 var stop = false
 var anim 
@@ -32,7 +31,6 @@ func _ready():
 	walk_timer.connect("timeout", self, "_on_walk_timer_timeout")
 	select_timer = get_node("select_timer")
 	select_timer.connect("timeout", self, "_on_select_timer_timeout")
-	
 	set_fixed_process(true)
 
 func _on_walk_timer_timeout():
@@ -45,9 +43,14 @@ func _on_action_timer_timeout():
 	can_act = true
 	
 func set_location():
-	var pos = game.current_scene.get_node("spawn_points").get_node("home").get_pos()
+	var pos = Vector2()
+		
 	if(game.justins):
 		pos = game.current_scene.get_node("spawn_points").get_node("justins").get_pos()
+	elif(game.princess):
+		pos = game.current_scene.get_node("spawn_points").get_node("princess").get_pos()
+	else:
+		pos = game.current_scene.get_node("spawn_points").get_node("home").get_pos()
 	set_pos(pos)
 	
 func _fixed_process(delta):

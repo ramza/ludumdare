@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=1]
+[gd_scene load_steps=16 format=1]
 
 [ext_resource path="res://scripts/actions.gd" type="Script" id=1]
 [ext_resource path="res://images/axe_effect-sheet.png" type="Texture" id=2]
 [ext_resource path="res://images/pole.png" type="Texture" id=3]
 [ext_resource path="res://images/spade_effect.png" type="Texture" id=4]
 [ext_resource path="res://audio/chop.wav" type="Sample" id=5]
-[ext_resource path="res://audio/pole.wav" type="Sample" id=6]
-[ext_resource path="res://audio/spade.wav" type="Sample" id=7]
+[ext_resource path="res://audio/diamond.wav" type="Sample" id=6]
+[ext_resource path="res://audio/pole.wav" type="Sample" id=7]
+[ext_resource path="res://audio/spade.wav" type="Sample" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -93,8 +94,9 @@ step = 0.1
 [sub_resource type="SampleLibrary" id=6]
 
 samples/axe = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
-samples/pole = { "db":20.0, "pitch":1.0, "sample":ExtResource( 6 ) }
-samples/spade = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/diamond = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
+samples/pole = { "db":20.0, "pitch":1.0, "sample":ExtResource( 7 ) }
+samples/spade = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
 [sub_resource type="RectangleShape2D" id=7]
 

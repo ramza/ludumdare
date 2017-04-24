@@ -3,9 +3,9 @@ extends Node
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var trees = 0
-var rocks = 0
-var fish = 0
+var trees = 100
+var rocks =100
+var fish = 100
 var HUD
 var player
 var current_scene
@@ -15,7 +15,10 @@ var resources = []
 var bridge = false
 var bridge1 = false
 var justins = false
+var princess = false
 var in_overworld = true
+var has_super_axe = false
+var diamond = false
 
 func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))
@@ -38,7 +41,7 @@ func _ready():
 	current_scene = get_tree().get_root().get_child(2)
 	HUD = current_scene.get_node("HUD")
 	player = current_scene.get_node("player")
-	
+	update_HUD()
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass

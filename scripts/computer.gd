@@ -15,6 +15,7 @@ var menu_index = 0
 var timer
 var can_input = true
 export var justins_computer = false
+export var princess_computer = false
 
 func _ready():
 	game.can_spawn = false
@@ -60,7 +61,9 @@ func _on_computer_body_enter(body):
 		menu.get_node("exit_label").show()
 		if(!game.bridge):
 			bridge_label.show()
-		if(game.bridge and !game.bridge1):
+		if(!game.bridge1 and justins_computer):
+			bridge_label.show()
+		if(princess_computer and !game.has_super_axe):
 			bridge_label.show()
 		menu_done = false
 		menu_select_box.show()
@@ -104,7 +107,18 @@ func _process(delta):
 					manager_scene.get_node("StreamPlayer").stop()
 				can_input = false
 			elif(menu_index == 1):
-				if(!game.bridge1 and justins_computer):
+				if(!game.has_super_axe and princess_computer):
+					if(game.trees >= 20 and game.rocks >= 20 and game.fish >= 20):
+						game.trees -= 20
+						game.rocks -= 20
+						game.fish-= 20
+						game.has_super_axe = true
+						game.update_HUD()
+						bridge_label.hide()
+						sample_player.play("powerup")
+					else:
+						sample_player.play("wrong")
+				elif(!game.bridge1 and justins_computer):
 					if(game.trees >= 10 and game.rocks >= 10 and game.fish >= 10):
 						game.trees -= 10
 						game.rocks -= 10
@@ -115,7 +129,7 @@ func _process(delta):
 						sample_player.play("powerup")
 					else:
 						sample_player.play("wrong")
-				elif(!game.bridge and !justins_computer):
+				elif(!game.bridge):
 					if(game.trees >= 5 and game.rocks >= 5 and game.fish >= 5):
 						game.trees -=5
 						game.rocks -=5

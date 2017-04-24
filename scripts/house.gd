@@ -21,3 +21,5 @@ func _on_house_body_enter(body):
 			game.goto_scene("res://scenes/house.tscn")
 		elif(justins_house):
 			game.goto_scene("res://scenes/justins_house.tscn")
+		elif(princess_house):
+			game.goto_scene("res://scenes/princess_house.tscn")

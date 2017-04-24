@@ -93,7 +93,7 @@ tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArr
 
 [sub_resource type="SampleLibrary" id=8]
 
-samples/walk = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 14 ) }
+samples/walk = { "db":-5.0, "pitch":1.0, "sample":ExtResource( 14 ) }
 
 [node name="player" type="KinematicBody2D"]
 
