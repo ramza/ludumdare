@@ -3,9 +3,9 @@ extends Node
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
-var trees = 100
-var rocks = 100
-var fish = 100
+var trees = 0
+var rocks = 0
+var fish = 0
 var HUD
 var player
 var current_scene
