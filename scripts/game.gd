@@ -4,7 +4,7 @@ extends Node
 # var a = 2
 # var b = "textvar"
 var trees = 100
-var rocks =100
+var rocks = 100
 var fish = 100
 var HUD
 var player
@@ -24,6 +24,12 @@ func update_HUD():
 	HUD.get_node("tree").get_node("Label").set_text(str(trees))
 	HUD.get_node("rocks").get_node("Label").set_text(str(rocks))
 	HUD.get_node("fish").get_node("Label").set_text(str(fish))
+	if(has_super_axe):
+		HUD.get_node("spade").set_modulate(Color(0, 0, 255))
+	if(diamond):
+		HUD.get_node("diamond").show()
+	else:
+		HUD.get_node("diamond").hide()
 	
 func add_harvested_trees(var value):
 	trees += value
@@ -39,9 +45,6 @@ func add_harvested_fish(var value):
 	
 func _ready():
 	current_scene = get_tree().get_root().get_child(2)
-	HUD = current_scene.get_node("HUD")
-	player = current_scene.get_node("player")
-	update_HUD()
 	# Called every time the node is added to the scene.
 	# Initialization here
 	pass
@@ -49,6 +52,7 @@ func _ready():
 func load_essentials():
 	player = current_scene.get_node("player")
 	HUD = current_scene.get_node("HUD")
+	
 	if(in_overworld):
 		player.set_location()
 	update_HUD()
@@ -72,7 +76,8 @@ func _deferred_goto_scene(path):
 
     # optional, to make it compatible with the SceneTree.change_scene() API
     get_tree().set_current_scene( current_scene )
-    load_essentials()
+    if( path != "res://scenes/title_screen.tscn"): 
+        load_essentials()
 
 func add_resource(var resource):
 	call_deferred("_deferred_add_resource", resource)

@@ -93,10 +93,10 @@ step = 0.1
 
 [sub_resource type="SampleLibrary" id=6]
 
-samples/axe = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/axe = { "db":-15.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 samples/diamond = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 samples/pole = { "db":20.0, "pitch":1.0, "sample":ExtResource( 7 ) }
-samples/spade = { "db":-10.0, "pitch":1.0, "sample":ExtResource( 8 ) }
+samples/spade = { "db":-15.0, "pitch":1.0, "sample":ExtResource( 8 ) }
 
 [sub_resource type="RectangleShape2D" id=7]
 

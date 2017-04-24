@@ -108,10 +108,10 @@ func _process(delta):
 				can_input = false
 			elif(menu_index == 1):
 				if(!game.has_super_axe and princess_computer):
-					if(game.trees >= 20 and game.rocks >= 20 and game.fish >= 20):
-						game.trees -= 20
-						game.rocks -= 20
-						game.fish-= 20
+					if(game.trees >= 10 and game.rocks >= 10 and game.fish >= 10):
+						game.trees -= 10
+						game.rocks -= 10
+						game.fish-= 10
 						game.has_super_axe = true
 						game.update_HUD()
 						bridge_label.hide()

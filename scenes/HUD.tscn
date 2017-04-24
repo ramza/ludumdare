@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://images/dialogue_box.png" type="Texture" id=1]
 [ext_resource path="res://images/axe_icon.png" type="Texture" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://images/tree_icon.png" type="Texture" id=5]
 [ext_resource path="res://images/stone.png" type="Texture" id=6]
 [ext_resource path="res://images/fish.png" type="Texture" id=7]
-[ext_resource path="res://images/select_box.png" type="Texture" id=8]
-[ext_resource path="res://images/black_bar.png" type="Texture" id=9]
+[ext_resource path="res://images/diamond_icon.png" type="Texture" id=8]
+[ext_resource path="res://images/select_box.png" type="Texture" id=9]
+[ext_resource path="res://images/black_bar.png" type="Texture" id=10]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -100,10 +101,31 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
+[node name="diamond" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/pos = Vector2( 291.632, 62.6493 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="diamond"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 7.0
+margin/top = -5.0
+margin/right = 47.0
+margin/bottom = 9.0
+text = "1"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="select_box" type="Sprite" parent="."]
 
 transform/pos = Vector2( 142.655, 165.89 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 
 [node name="dialogue_box" type="Node2D" parent="."]
 
@@ -113,7 +135,7 @@ visibility/visible = false
 
 transform/pos = Vector2( 158.828, 163.394 )
 transform/scale = Vector2( 1.04893, 1.20449 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="dialogue_box"]
 

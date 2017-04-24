@@ -74,6 +74,7 @@ friction = 1.0
 bounce = 0.0
 script/script = ExtResource( 3 )
 justins_computer = true
+princess_computer = false
 
 [node name="Sprite" type="Sprite" parent="computer"]
 

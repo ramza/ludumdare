@@ -24,6 +24,7 @@ func hit(var damage):
 	if(health <= 0):
 		queue_free()
 		game.diamond = true
+		game.update_HUD()
 	else:
 		anim.play("shake")
 		var fx = chips.instance()
